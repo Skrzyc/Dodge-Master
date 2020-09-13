@@ -2,6 +2,9 @@
 
 An arcade game on pyxel, try to play, really it's quite fun
 
+![animation](https://user-images.githubusercontent.com/59581803/93007369-b9c01a80-f568-11ea-98f6-7b129bebf372.gif)
+
+
 **Modules :** ```math``` , ```random```, ```pyxel``` - (pyxel version 1.4.1)
 
 ## How to play ?
