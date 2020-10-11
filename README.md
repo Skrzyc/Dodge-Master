@@ -31,7 +31,7 @@ An arcade game on pyxel, try to play, really it's quite fun
 ## Things to do
 * [ ] maybe some cool graphics instead of squares and circles
 * [ ] add some music
-* [ ] balls should not appear anywhere near the player
+* [x] balls should not appear anywhere near the player
 * [ ] maybe some reset key
 * [ ] more superpowers ?
 
