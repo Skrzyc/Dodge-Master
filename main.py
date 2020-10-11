@@ -44,12 +44,14 @@ class Package:
 
 
 class Ball:
-    def __init__(self):
+    def __init__(self, player_x, player_y):
 
         def draw():
             return random.randrange(-self.ball_speed, self.ball_speed, 2)
         
         self.which_ball = random.randint(1, 3)
+        self.player_x = player_x
+        self.player_y = player_y
 
         if self.which_ball == 1 or self.which_ball == 2:
             self.ball_speed = 6
@@ -60,10 +62,13 @@ class Ball:
             self.radius = 4
             self.color = 2
 
-        self.position = Atr(
-            random.randrange(border['left']+self.radius, border['right']-self.radius,self.radius),
-            random.randrange(border['top']+self.radius, border['bottom']-self.radius,self.radius)
-            )
+        while True:
+            self.ball_x = random.randrange(border['left']+self.radius, border['right']-self.radius,self.radius)
+            self.ball_y = random.randrange(border['left']+self.radius, border['right']-self.radius,self.radius)
+            if (
+                math.fabs(self.player_x - self.ball_x) > 30
+                and math.fabs(self.player_y - self.ball_y) > 30
+                ): break
 
         while True:
             self.vx = draw()
@@ -71,6 +76,7 @@ class Ball:
             if self.vx or self.vy: break
             
         self.vec_speed = Atr(self.vx, self.vy)
+        self.position = Atr(self.ball_x, self.ball_y)
 
     def update(self):
         self.position.x += self.vec_speed.x
@@ -142,7 +148,7 @@ class App:
         
         def add_ball(divider):
             if self.timer%divider == 0 or self.timer == 50:
-                new_ball = Ball()
+                new_ball = Ball(self.posx, self.posy)
                 self.how_many += 1
                 self.balls.append(new_ball)
 
